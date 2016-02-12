@@ -1,0 +1,121 @@
+<html id="default"><head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+
+    <title>Theemey.js</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100italic,300,300italic,400,400italic" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="rgb(101, 109, 120)"></head>
+
+  <body>
+    <div class="scrollbox">
+      <header>
+        <h1>
+          Theemey.js
+        </h1>
+      </header>
+      <article>
+        <p>
+          A theme engine built in jQuery and Stylus. Try it out on this page.
+        </p>
+        <h2>
+          Setup
+        </h2>
+        <h4>
+          JS
+        </h4>
+        <p>
+          Include the script in your page:
+        </p>
+        <pre><code>&lt;script src=&quot;assets/theemey.js&quot;&gt;&lt;/script&gt;</code></pre><br />
+        <h2>
+          Making Your Theme
+        </h2>
+        <h4>
+          CSS
+        </h4>
+        <p>
+          Include the Stylus mixin in your page:
+        </p>
+        <pre><code>theme($name, /* theme properties go here */)
+      /#&#123;$name&#125; &amp;
+        //theme goes here</code></pre><br />
+        <p>
+          Only use variable properties here, otherwise you'll have redundant code.
+        </p>
+        <h4>
+          CSS
+        </h4>
+        <p>
+          Write the rest of your theme like normal:
+        </p>
+        <pre><code>body
+      margin 0
+    
+    header
+      width 100%
+      height 64px</code></pre><br />
+        <h4>
+          CSS
+        </h4>
+        <p>
+          Call the themes on the &lt;body&gt; element:
+        </p>
+        <pre><code>body
+      theme(/* name */, /* properties */)</code></pre>
+        <h2>
+          Example
+        </h2>
+        <h4>
+          HTML
+        </h4>
+        <p>
+          Setup your HTML:
+        </p>
+        <pre><code>&lt;html&gt;
+     &lt;head&gt;
+       &lt;link href=&quot;assets/style.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/link&gt;
+     &lt;/head&gt;
+    
+      &lt;body&gt;
+        &lt;header&gt;Header&lt;/header&gt;
+    
+        &lt;article&gt;
+          &lt;h3&gt;Lorem Ipsum...&lt;/h3&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a dapibus mi. Donec vitae tempor magna. Vestibulum orci leo, porttitor ac nisi nec, lacinia imperdiet leo. Nam luctus, felis sed molestie pretium, turpis orci eleifend est, eget ullamcorper metus risus aliquam justo. Aenean est leo, pharetra vitae tempor ac, vestibulum non dolor. Cras vulputate sed justo nec auctor. Ut sit amet semper augue. Vivamus erat diam, iaculis eget libero at, accumsan consectetur ante. Morbi sagittis arcu sollicitudin hendrerit fermentum.&lt;/p&gt;
+        &lt;/article&gt;
+    
+        &lt;script src=&quot;assets/theemey.js&quot;&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+        <h4>
+          CSS
+        </h4>
+        <p>
+          Setup your CSS:
+        </p>
+        <pre><code>theme($name, $background, $color, $font)
+      #&#123;$name&#125; &
+        background $background
+        color $color
+        font-family $font
+    
+    body
+      margin 0
+      theme(default, #333, #bdbdbd, sans-serif)
+      theme(red, #c00, #000, serif)
+    
+    header
+      width 100%
+      paddding 32px
+    
+    article
+      width 600px
+      max-width 90%
+      margin 32px auto</code></pre>
+      </article>
+    </div>
+    </body>
+</html>
