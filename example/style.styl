@@ -1,0 +1,223 @@
+$colors = grapefruit #ED5565 #DA4453,
+          bittersweet #FC6E51 #E9573F,
+          sunflower #FFCE54 #F6BB42,
+          grass #A0D468 #8CC152,
+          mint #48CFAD #37BC9B,
+          aqua #4FC1E9 #3BAFDA,
+          bluejeans #5D9CEC #4A89DC,
+          lavender #AC92EC #967ADC,
+          pinkrose #EC87C0 #D770AD,
+          lightgray #F5F7FA #E6E9ED,
+          mediumgray #CCD1D9 #AAB2BD,
+          darkgray #656D78 #434A54
+
+$color(name, num = 1)
+  for $n in (0..length($colors) - 1)
+    $c = $colors[$n]
+    if name == $c[0]
+      return $c[num]
+
+fade($dir, $pos)
+  -webkit-mask-image linear-gradient($dir, rgba(0,0,0,1) $pos, rgba(0,0,0,0) 100%)
+
+text-selection(property)
+  -webkit-touch-callout property
+  -webkit-user-select property
+  -khtml-user-select property
+  -moz-user-select property
+  -ms-user-select property
+  user-select property
+
+cursor-highlight($color)
+  -webkit-tap-highlight-color $color
+
+theme($name, $background, $primary, $secondary)
+  /html#{$name} &
+    background $background
+    color $primary
+    transition all .2s
+    if (light($background))
+      ::selection
+        background $secondary
+        color $background
+    if (dark($background))
+      ::selection
+        background $secondary
+        color $primary
+    header
+      background rgba($background, .75)
+      fade(180deg, 70%)
+      transition all .2s
+    h1, h2, h3, h4, h5, h6, code
+      color $secondary
+      transition all .2s
+  /html#{$name}
+    @media (pointer: fine)
+      ::-webkit-scrollbar
+        background $background
+        width 1rem
+        height 1rem
+        &-thumb
+          background rgba($secondary, .25) content-box
+          &:hover
+            background rgba($secondary, .3) content-box
+          &:active
+            background rgba($secondary, .35) content-box
+      code::-webkit-scrollbar
+        background rgba(0,0,0,0)
+  /#theemey
+    .theemey-theme#{$name}
+      background $secondary
+
+:root
+  font-size calc(1em + .5vw)
+
+*
+  margin 0
+  font-weight 100
+  font-family 'Roboto'
+
+@media (max-width: 1200px)
+  *
+    font-weight 300
+  
+
+h1,h2,h3,h4,h5,h6
+  line-height 1em
+  margin 1em 0 0 0
+
+//themes
+body
+  theme(default, $color(lightgray, 1), $color(mediumgray, 2), $color(darkgray, 1))
+  theme(bittersweet, $color(darkgray, 2), $color(mediumgray, 1), $color(bittersweet, 2))
+  theme(grass, $color(lightgray, 1), $color(mediumgray, 2), $color(grass, 2))
+  theme('aqua', $color(darkgray, 2), $color(lightgray, 2), $color(aqua, 1))
+  theme(night, $color(darkgray, 2), $color(mediumgray, 1), $color(lavender, 2))
+  theme(grapefruit, $color(lightgray, 2), $color(darkgray, 2), $color(grapefruit))
+  theme(sunflower, $color(darkgray, 2), $color(lightgray, 1), $color(sunflower));
+
+#theemey
+  position fixed
+  top 50%
+  left 0
+  z-index 1000000000
+  transform translateY(-50%)
+  text-selection none
+  .container
+    width 0
+    position relative
+    .theemey-theme
+      width 3rem
+      height 3rem
+      margin .5rem 0
+      border .25rem solid rgba(0,0,0,.15)
+      border-radius 100%
+      transform translate3d(-75%,0,0)
+      position relative
+      cursor pointer
+      box-shadow 0 0 0 200vmax rgba(0,0,0,0)
+      will-change transform, box-shadow
+      transition all .2s .2s
+      &.active
+        transform translate3d(-60%,0,0)
+      &:hover
+        transform translate3d(-50%,0,0)
+        box-shadow 0 0 0 150vmax rgba(0,0,0,.5)
+        z-index 1
+        transition all .2s
+        + span
+          opacity 1
+          transform translate3d(.25em, -50%, 0)
+          transition all .2s
+    span
+      display inline-block
+      position absolute
+      top 50%
+      left 2rem
+      z-index 2
+      transform translate3d(-.25em, -50%, 0)
+      opacity 0
+      color white
+      will-change transform, opacity
+      pointer-events none
+      transition all .2s .2s
+  @media (pointer: coarse)
+    .container
+      .theemey-theme
+        box-shadow none !important
+        &:hover
+          transform translate3d(-75%,0,0)
+        &.active
+          transform translate3d(-60%,0,0)
+      span
+        display none
+
+
+
+body
+  cursor-highlight rgba(0,0,0,0)
+
+@media (pointer: fine)
+  ::-webkit-scrollbar
+    width 1rem
+    height 1rem
+    &-thumb
+      border-width .5rem .5rem .5rem 0
+      border-style solid
+      border-color rgba(0,0,0,0)
+      &:horizontal
+        border-width 0 .5rem .5rem .5rem
+
+.scrollbox
+  width 100vw
+  height 100vh
+  overflow auto
+
+header
+  width calc(100% - 3rem)
+  padding .5em 1em
+  position fixed
+  top 0
+  left 0
+  z-index 10000
+  h1
+    margin .5em
+
+article
+  width calc(320px + 50vw)
+  max-width calc(100% - 2em)
+  font-size 1.2em
+  box-sizing border-box
+  padding 2.5vw 5vw
+  margin 6rem auto 2em auto
+  *
+    line-height 1.5em
+
+code
+  position relative
+  z-index 0
+  display block
+  white-space pre-wrap
+  overflow-X auto
+  font-weight 300
+  margin .5rem
+  padding .5rem 1rem .5rem 2.5rem
+  border-left .5rem solid rgba(0,0,0,.05)
+  box-sizing border-box
+  background rgba(0,0,0,.05)
+  .line
+    position relative
+    display block
+    min-height 1.5em
+    .line-content
+      display block
+      margin-right 2em
+      font-family 'Roboto Mono'
+    .line-number
+      position absolute
+      top .15rem
+      left -.2rem
+      font-size 1rem
+      opacity .5
+      transform translateX(-100%)
+      text-selection none
