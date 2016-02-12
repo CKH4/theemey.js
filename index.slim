@@ -1,0 +1,108 @@
+.scrollbox
+  header
+    h1 Theemey.js
+
+  article
+    p
+      |
+        A theme engine built in jQuery and Stylus. Try it out on this page.
+    h2 Setup
+    h4 JS
+    p
+      |
+        Include the script in your page:
+    pre
+      code
+        |
+          &lt;script src=&quot;assets/theemey.js&quot;&gt;&lt;/script&gt;
+    br
+
+    h2 Making Your Theme
+    h4 CSS
+    p
+      |
+        Include the Stylus mixin in your page:
+    pre
+      code
+        |
+          theme($name, /* theme properties go here */)
+            /#&#123;$name&#125; &amp;
+              //theme goes here
+    br
+    p
+      |
+        Only use variable properties here, otherwise you'll have redundant code.
+    h4 CSS
+    p
+      |
+        Write the rest of your theme like normal:
+    pre
+      code
+        |
+          body
+            margin 0
+          
+          header
+            width 100%
+            height 64px
+    br
+    h4 CSS
+    p
+      |
+        Call the themes on the &lt;body&gt; element:
+    pre
+      code
+        |
+          body
+            theme(/* name */, /* properties */)
+
+    h2 Example
+    h4 HTML
+    p
+      |
+        Setup your HTML:
+    pre
+      code
+        |
+          &lt;html&gt;
+           &lt;head&gt;
+             &lt;link href=&quot;assets/style.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/link&gt;
+           &lt;/head&gt;
+
+            &lt;body&gt;
+              &lt;header&gt;Header&lt;/header&gt;
+            
+              &lt;article&gt;
+                &lt;h3&gt;Lorem Ipsum...&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a dapibus mi. Donec vitae tempor magna. Vestibulum orci leo, porttitor ac nisi nec, lacinia imperdiet leo. Nam luctus, felis sed molestie pretium, turpis orci eleifend est, eget ullamcorper metus risus aliquam justo. Aenean est leo, pharetra vitae tempor ac, vestibulum non dolor. Cras vulputate sed justo nec auctor. Ut sit amet semper augue. Vivamus erat diam, iaculis eget libero at, accumsan consectetur ante. Morbi sagittis arcu sollicitudin hendrerit fermentum.&lt;/p&gt;
+              &lt;/article&gt;
+            
+              &lt;script src=&quot;assets/theemey.js&quot;&gt;&lt;/script&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;
+    h4 CSS
+    p
+      |
+        Setup your CSS:
+    pre
+      code
+        |
+          theme($name, $background, $color, $font)
+            #&#123;$name&#125; &
+              background $background
+              color $color
+              font-family $font
+          
+          body
+            margin 0
+            theme(default, #333, #bdbdbd, sans-serif)
+            theme(red, #c00, #000, serif)
+          
+          header
+            width 100%
+            paddding 32px
+          
+          article
+            width 600px
+            max-width 90%
+            margin 32px auto
