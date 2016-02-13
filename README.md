@@ -1,5 +1,7 @@
 # theemey.js
 
+demo - http://ckh4.github.io/theemey.js/
+
 ## How to use?
 ### Setup
 Include the script in your page:
