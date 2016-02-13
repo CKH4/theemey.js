@@ -29,10 +29,17 @@ html#default body ::selection {
   background: #656d78;
   color: #f5f7fa;
 }
+html#default body a {
+  color: #656d78;
+}
 html#default body header {
   background: rgba(245,247,250,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#default body #banner {
+  color: #f5f7fa;
+  background: #656d78;
 }
 html#default body h1,
 html#default body h2,
@@ -75,10 +82,17 @@ html#bittersweet body ::selection {
   background: #e9573f;
   color: #ccd1d9;
 }
+html#bittersweet body a {
+  color: #e9573f;
+}
 html#bittersweet body header {
   background: rgba(67,74,84,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#bittersweet body #banner {
+  color: #434a54;
+  background: #e9573f;
 }
 html#bittersweet body h1,
 html#bittersweet body h2,
@@ -121,10 +135,17 @@ html#grass body ::selection {
   background: #8cc152;
   color: #f5f7fa;
 }
+html#grass body a {
+  color: #8cc152;
+}
 html#grass body header {
   background: rgba(245,247,250,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#grass body #banner {
+  color: #f5f7fa;
+  background: #8cc152;
 }
 html#grass body h1,
 html#grass body h2,
@@ -167,10 +188,17 @@ html#aqua body ::selection {
   background: #4fc1e9;
   color: #e6e9ed;
 }
+html#aqua body a {
+  color: #4fc1e9;
+}
 html#aqua body header {
   background: rgba(67,74,84,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#aqua body #banner {
+  color: #434a54;
+  background: #4fc1e9;
 }
 html#aqua body h1,
 html#aqua body h2,
@@ -213,10 +241,17 @@ html#night body ::selection {
   background: #967adc;
   color: #ccd1d9;
 }
+html#night body a {
+  color: #967adc;
+}
 html#night body header {
   background: rgba(67,74,84,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#night body #banner {
+  color: #434a54;
+  background: #967adc;
 }
 html#night body h1,
 html#night body h2,
@@ -259,10 +294,17 @@ html#grapefruit body ::selection {
   background: #ed5565;
   color: #e6e9ed;
 }
+html#grapefruit body a {
+  color: #ed5565;
+}
 html#grapefruit body header {
   background: rgba(230,233,237,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#grapefruit body #banner {
+  color: #e6e9ed;
+  background: #ed5565;
 }
 html#grapefruit body h1,
 html#grapefruit body h2,
@@ -305,10 +347,17 @@ html#sunflower body ::selection {
   background: #ffce54;
   color: #f5f7fa;
 }
+html#sunflower body a {
+  color: #ffce54;
+}
 html#sunflower body header {
   background: rgba(67,74,84,0.75);
   -webkit-mask-image: linear-gradient(180deg, #000 70%, rgba(0,0,0,0) 100%);
   transition: all 0.2s;
+}
+html#sunflower body #banner {
+  color: #434a54;
+  background: #ffce54;
 }
 html#sunflower body h1,
 html#sunflower body h2,
@@ -416,19 +465,12 @@ html#sunflower body code {
 body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-@media (pointer: fine) {
-  ::-webkit-scrollbar {
-    width: 1rem;
-    height: 1rem;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-width: 0.5rem 0.5rem 0.5rem 0;
-    border-style: solid;
-    border-color: rgba(0,0,0,0);
-  }
-  ::-webkit-scrollbar-thumb:horizontal {
-    border-width: 0 0.5rem 0.5rem 0.5rem;
-  }
+a {
+  text-decoration: none;
+  font-weight: 400;
+}
+a:hover {
+  text-decoration: underline;
 }
 .scrollbox {
   width: 100vw;
@@ -436,22 +478,36 @@ body {
   overflow: auto;
 }
 header {
-  width: calc(100% - 3rem);
+  width: 100%;
   padding: 0.5em 1em;
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1;
 }
 header h1 {
   margin: 0.5em;
+}
+#banner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1em 2em;
+  z-index: 2;
+  opacity: 0.7;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+#banner:hover {
+  opacity: 1;
 }
 article {
   width: calc(320px + 50vw);
   max-width: calc(100% - 2em);
   font-size: 1.2em;
   box-sizing: border-box;
-  padding: 2.5vw 5vw;
+  padding: 2.5vw 5vw 3em 5vw;
   margin: 6rem auto 2em auto;
 }
 article * {
@@ -493,4 +549,24 @@ code .line .line-number {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-width: 0.5rem 0.5rem 0.5rem 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-width: 0 0.5rem 0.5rem 0.5rem;
+  }
+  header {
+    width: calc(100% - 1rem);
+  }
+  #banner {
+    right: 1rem;
+  }
 }
