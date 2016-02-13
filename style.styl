@@ -44,10 +44,15 @@ theme($name, $background, $primary, $secondary)
       ::selection
         background $secondary
         color $primary
+    a
+      color $secondary
     header
       background rgba($background, .75)
       fade(180deg, 70%)
       transition all .2s
+    #banner
+      color $background
+      background $secondary
     h1, h2, h3, h4, h5, h6, code
       color $secondary
       transition all .2s
@@ -157,16 +162,11 @@ body
 body
   cursor-highlight rgba(0,0,0,0)
 
-@media (pointer: fine)
-  ::-webkit-scrollbar
-    width 1rem
-    height 1rem
-    &-thumb
-      border-width .5rem .5rem .5rem 0
-      border-style solid
-      border-color rgba(0,0,0,0)
-      &:horizontal
-        border-width 0 .5rem .5rem .5rem
+a
+  text-decoration none
+  font-weight 400
+  &:hover
+    text-decoration underline
 
 .scrollbox
   width 100vw
@@ -174,21 +174,34 @@ body
   overflow auto
 
 header
-  width calc(100% - 3rem)
+  width 100%
   padding .5em 1em
+  box-sizing border-box
   position fixed
   top 0
   left 0
-  z-index 10000
+  z-index 1
   h1
     margin .5em
+
+#banner
+  position absolute
+  bottom 0
+  right 0
+  padding 1em 2em
+  z-index 2
+  opacity .7
+  text-decoration none
+  transition all .2s
+  &:hover
+    opacity 1
 
 article
   width calc(320px + 50vw)
   max-width calc(100% - 2em)
   font-size 1.2em
   box-sizing border-box
-  padding 2.5vw 5vw
+  padding 2.5vw 5vw 3em 5vw
   margin 6rem auto 2em auto
   *
     line-height 1.5em
@@ -221,3 +234,18 @@ code
       opacity .5
       transform translateX(-100%)
       text-selection none
+
+@media (pointer: fine)
+  ::-webkit-scrollbar
+    width 1rem
+    height 1rem
+    &-thumb
+      border-width .5rem .5rem .5rem 0
+      border-style solid
+      border-color rgba(0,0,0,0)
+      &:horizontal
+        border-width 0 .5rem .5rem .5rem
+  header
+    width calc(100% - 1rem)
+  #banner
+    right 1rem
