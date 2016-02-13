@@ -4,7 +4,7 @@
 ### Setup
 Include the script in your page:
 ###### JS
-<script src="assets/theemey.js"></script>
+    <script src="assets/theemey.js"></script>
 
 ##Making Your Theme
 
@@ -15,6 +15,8 @@ Include the Stylus mixin in your page:
         //theme goes here
 
 Only use variable properties here, otherwise you'll have redundant code.
+
+<br>
 Write the rest of your theme like normal:
 ###### CSS
     body
@@ -24,6 +26,7 @@ Write the rest of your theme like normal:
       width 100%
       height 64px
 
+<br>
 Call the themes on the <body> element:
 ###### CSS
     body
@@ -49,6 +52,7 @@ Setup your HTML:
       </body>
     </html>
 
+<br>
 Setup your CSS:
 ###### CSS
 theme($name, $background, $color, $font)
@@ -70,3 +74,11 @@ theme($name, $background, $color, $font)
       width 600px
       max-width 90%
       margin 32px auto
+
+<br>
+##Changelog
+- v1.0 First Release, basic functionality
+
+##Future Plans
+- v1.5 Add support for other CSS preprocessors
+- v2.0 Remove jQuery Dependency
